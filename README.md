@@ -10,10 +10,10 @@ It is operated like a small production network, not a casual homelab.
 
 This lab brings together compute, storage, networking, and security in a single, coherent environment where I can:
 
-- Design and test security-focused architectures
-- Practice change management, troubleshooting, and incident response
-- Experiment with IDS/IPS, logging, and honeypots in a controlled setting
-- Document infrastructure so it can be understood and maintained over time
+ Design and test security-focused architectures
+ Practice change management, troubleshooting, and incident response
+ Experiment with IDS/IPS, logging, and honeypots in a controlled setting
+ Document infrastructure so it can be understood and maintained over time
 
 ---
 
