@@ -1,0 +1,28 @@
+# OS / tooling
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Python cache (if you ever use it)
+__pycache__/
+*.pyc
+
+# Backup / temp artifacts
+*.bak
+*.old
+
+# Secrets (just in case)
+secrets/
+*.key
+*.pem
+*.pfx
+*.crt
+config-local.yml
