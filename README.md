@@ -1,6 +1,13 @@
 # Digital Fortress Lab
 
-**Digital Fortress Lab** is a self-hosted security and infrastructure lab built on enterprise hardware and operated like a small production network.
+**Digital Fortress Lab** is a self-hosted security and infrastructure lab built on enterprise hardware and operated like a small production network. It is designed, built, and documented end to end by a single operator as a long-term R&D and learning platform.
+
+> ### For recruiters / hiring managers
+> This project demonstrates my ability to:
+> - Design and operate a segmented, enterprise-style network on Proxmox and legacy enterprise gear.  
+> - Implement ASA/SonicWall firewalls, VPNs, IDS/IPS (Suricata/SELKS), and centralized logging.  
+> - Document architectures, runbooks, and change management so someone else could understand, rebuild, or operate the environment.  
+> I use this lab to prototype security, monitoring, and operations ideas that I later bring into my professional work.
 
 It combines:
 
@@ -40,7 +47,9 @@ The lab is isolated from production networks and is used to design, test, and op
   - [Addressing Approach](#addressing-approach-sanitized)
 - [Security & Monitoring](#-security--monitoring)
 - [Repository Layout](#-repository-layout)
+- [Relevance to Roles](#-relevance-to-roles)
 - [Operations Model](#-operations)
+- [My Role in This Project](#-my-role-in-this-project)
 - [Sanitization & Scope](#-sanitization--scope)
 
 ---
@@ -294,6 +303,43 @@ digital-fortress-lab/
 - Then: `docs/02-network-architecture.md` – network layout, VLANs, and flows
 - And: `docs/03-security-architecture.md` – security model and monitoring
 
+### Automation & Config Artifacts
+
+The `infra/` directory collects examples of how the environment is configured and automated conceptually:
+
+- `example-firewall-policies/asa-lab-base-policy.txt` – base ASA policy structure for the lab environment.
+- `sample-ansible-playbooks/` – conceptual Ansible examples for provisioning and configuration.
+- `scripts/` – utility scripts for recurring tasks and experiments.
+
+These artifacts are intentionally generic and sanitized, but they illustrate the structure and approach used to manage the environment.
+
+---
+
+## 🎯 Relevance to Roles
+
+This project is designed to be more than a homelab showcase; it is a portfolio artifact that overlaps with several role types.
+
+### Security / Network / Infrastructure Engineering
+
+- Demonstrates hands-on experience with:
+  - Firewalling (Cisco ASA), VPNs (SonicWall SRA), and segmented network design.
+  - Building and operating a multi-VLAN, multi-zone environment with clear trust boundaries.
+  - Centralized logging, IDS/IPS, and practical trade-offs around monitoring coverage.
+
+### DevOps / Platform / SRE
+
+- Shows:
+  - A focus on reproducibility and documentation over ad-hoc configuration.
+  - A foundation for infrastructure-as-code and automated provisioning (e.g., Ansible samples, structured configs).
+  - A realistic lab for failure testing, exposure tests, and topology changes before applying similar ideas in production.
+
+### Data / Analytics / Project Controls (Technical Focus)
+
+- Highlights:
+  - Systems thinking and comfort with complex technical environments.
+  - A disciplined approach to change management, observability, and root-cause investigation.
+  - The ability to translate messy infrastructure into structured documentation and repeatable processes.
+
 ---
 
 ## ⚙️ Operations
@@ -317,6 +363,19 @@ The goal is for the lab to remain understandable and reproducible rather than dr
 
 ---
 
+## 👤 My Role in This Project
+
+This lab is a **solo-built** environment:
+
+- I sourced, racked, and cabled the hardware.
+- I designed the network, security zones, and addressing scheme.
+- I configured the hypervisor, firewalls, VPNs, monitoring stack, and management access.
+- I wrote the documentation, diagrams, and operational runbooks in this repository.
+
+The intent is to reflect how I approach real-world environments: start from clear boundaries and objectives, build for observability and safety, and document so others can understand, operate, and extend the system.
+
+---
+
 ## 🧼 Sanitization & Scope
 
 All content in this repository is intentionally sanitized:
@@ -328,5 +387,3 @@ All content in this repository is intentionally sanitized:
 
 The lab is isolated from any production or customer systems.  
 Honeypot and exposure testing is confined to this environment and configured to avoid unintended impact on external networks.
-
----
