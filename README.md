@@ -1,6 +1,8 @@
 # Digital Fortress Lab
 
-**Digital Fortress Lab** is a self-hosted security and infrastructure lab built on enterprise hardware and operated like a small production network. It combines:
+**Digital Fortress Lab** is a self-hosted security and infrastructure lab built on enterprise hardware and operated like a small production network.
+
+It combines:
 
 - Proxmox virtualization
 - Dell server and storage platforms
@@ -12,16 +14,60 @@ The lab is isolated from production networks and is used to design, test, and op
 
 ---
 
+## 📌 Quick Facts
+
+| Item             | Description                                                     |
+|------------------|-----------------------------------------------------------------|
+| Environment type | Self-hosted, isolated security & infrastructure lab            |
+| Core hypervisor  | Proxmox VE on Dell PowerEdge R710                               |
+| Storage          | EqualLogic FS7610 (2 nodes) + Avid 18-bay storage chassis       |
+| Switching        | Dell X1052P managed switch + dual shielded patch panels         |
+| Perimeter        | Cisco ASA 5510 / 5515-X + SonicWall SRA 4200                    |
+| Monitoring       | Panasonic Toughbook CF-30 running NST/SELKS + Suricata          |
+| Network model    | Multi-VLAN, zone-based segmentation with ASA as L3 boundary     |
+
+---
+
+## 🗺️ Table of Contents
+
+- [Purpose](#-purpose)
+- [Physical Platform](#-physical-platform)
+  - [Core Hardware Summary](#core-hardware-summary)
+  - [Hardware Gallery](#hardware-gallery)
+- [Logical Architecture](#-logical-architecture)
+  - [Zones](#zones-sanitized)
+  - [Traffic Flows](#traffic-flows-conceptual)
+  - [Addressing Approach](#addressing-approach-sanitized)
+- [Security & Monitoring](#-security--monitoring)
+- [Repository Layout](#-repository-layout)
+- [Operations Model](#-operations)
+- [Sanitization & Scope](#-sanitization--scope)
+
+---
+
 ## 🧭 Purpose
 
 The lab is intended to:
 
-- Model a compact enterprise-style network end to end  
-- Provide a controlled environment for firewall policy, VPN, and segmentation work  
-- Capture logs and packet data for analysis and IDS/IPS tuning  
-- Practice routine operations such as backup, restore, and change management  
+- Model a compact, enterprise-style network end to end  
+- Provide a controlled environment for:
+  - Firewall policy and access control  
+  - VPN and remote access scenarios  
+  - Segmentation and exposure tests  
+- Capture logs and packet data for:
+  - IDS/IPS analysis and tuning  
+  - Investigating traffic patterns and attack behavior  
+- Practice routine operations:
+  - Backup and restore  
+  - Change management  
+  - Incremental topology changes
 
-This repository documents the physical layout, logical design, security model, and operational approach.
+This repository documents:
+
+- The **physical layout** of the rack
+- The **logical design** of networks and zones
+- The **security model** and monitoring approach
+- The **operations model** used to keep the lab coherent over time
 
 ---
 
@@ -29,62 +75,94 @@ This repository documents the physical layout, logical design, security model, a
 
 The environment is built into a rack with structured cabling, patch panels, and out-of-band access.
 
+### Core Hardware Summary
 
-  ### Core Hardware
+| Category              | Components                                                                                     | Role                                                       |
+|-----------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Compute               | Dell PowerEdge R710 (dual Xeon, 128 GB RAM)                                                   | Primary Proxmox host                                       |
+| Additional Compute    | Dell EqualLogic FS7610 (2 nodes)                                                              | Storage/services appliance; additional compute capability  |
+| Storage               | Avid 18-bay chassis with mixed SAS/SATA disks                                                | Bulk and lab storage                                       |
+| Switching             | Dell X1052P 52-port managed switch                                                            | Core switching and VLAN hub                                |
+| Cabling               | Dual shielded Cat6 patch panels (front + rear)                                               | Cable termination and cross-connect                        |
+| Out-of-band access    | OpenGear CM4148 console manager, rackmount KVM, HP TFT5600 rack console                      | Serial and local VGA/keyboard access                       |
+| Security appliances   | Cisco ASA 5510 / 5515-X, SonicWall SRA 4200                                                   | Perimeter firewalling, zone routing, and VPN               |
+| Monitoring / SOC node | Panasonic Toughbook CF-30 running NST/SELKS with Suricata                                    | Central logging, DPI, and alerting                         |
 
-- **Computing**
-  - Dell PowerEdge R710
-  - Primary Proxmox host for the build. (Dual Xeon, 128 GB RAM)
-    ![](/assets/photos/Compute1.jpg)
-  
-  - Dell EqualLogic FS7610 (2 nodes) 
-    Additional Computing & Storage power.
-    ![](/assets/photos/Compute2.png)
-  
-- **Storage**
-  - Avid 18-bay chassis with mixed SAS/SATA disks
-     ![18-bay chassis](/assets/photos/Storage1.png)
-    
-  - EqualLogic-backed storage presented to Proxmox and other services
-    ![backed storage presented to Proxmox and other services](/assets/photos/Storage2.png)
-    
-- **Network & Management**
-  - Dell X1052P 52-port managed switch – core switching and VLAN hub
-     ![core switching and VLAN hub](/assets/photos/switch.jpg)
-    
-  - Dual shielded Cat6 patch panels (front + rear) – cable termination and cross-connect
-     ![patch panels](/assets/photos/patch.jpg)
-    
-  - OpenGear CM4148 console manager – centralized serial access for network and security devices
-    ![core switching and VLAN hub](/assets/photos/console3.jpg)
-    
-  - Rackmount KVM and HP TFT5600 rack console – local VGA/keyboard access
-    ![local VGA/keyboard access](/assets/photos/console1.jpg)
-    
-    ![local VGA/keyboard access](/assets/photos/console2.jpg)
-    
-- **Security & Remote Access**
-  - Cisco ASA 5510 / 5515-X – perimeter firewalls and zone routing
-    ![perimeter firewalls and zone routing](/assets/photos/sec1.jpg)
-    
-    ![perimeter firewalls and zone routing](/assets/photos/sec3.jpg)
-    
-  - SonicWall SRA 4200 – SSL VPN and remote access gateway
-    ![SSL VPN and remote access gateway](/assets/photos/sec2.jpg)
-    
-- **Monitoring Node**
-  - Panasonic Toughbook CF-30 – runs NST/SELKS and Suricata as a small SOC node
-    ![NST/SELKS and Suricata as a small SOC node](/assets/photos/monitor1.jpg)
-    
-    ![NST/SELKS and Suricata as a small SOC node](/assets/photos/monitor2.jpg)
-    
-All devices are cabled through the patch panels into the core switch. Management access is available over a dedicated management VLAN, via serial on the console manager, or locally through the KVM.
+All devices are cabled through the patch panels into the core switch.  
+Management access is available over:
+
+- A dedicated **management VLAN**
+- **Serial console** via OpenGear CM4148
+- Local **KVM / rack console**
+
+---
+
+### Hardware Gallery
+
+> Images are illustrative and correspond to the actual lab hardware.  
+> Click to expand each category.
+
+<details>
+  <summary><strong>Compute</strong> – Proxmox host and EqualLogic nodes</summary>
+
+- Dell PowerEdge R710 – primary Proxmox host  
+  ![](/assets/photos/Compute1.jpg)
+
+- Dell EqualLogic FS7610 (2 nodes) – additional compute and storage  
+  ![](/assets/photos/Compute2.png)
+
+</details>
+
+<details>
+  <summary><strong>Storage</strong> – Avid chassis and EqualLogic storage</summary>
+
+- Avid 18-bay chassis with mixed SAS/SATA disks  
+  ![18-bay chassis](/assets/photos/Storage1.png)
+
+- EqualLogic-backed storage presented to Proxmox and other services  
+  ![backed storage presented to Proxmox and other services](/assets/photos/Storage2.png)
+
+</details>
+
+<details>
+  <summary><strong>Network & Management</strong> – Switch, patch panels, console access</summary>
+
+- Dell X1052P 52-port managed switch – core switching and VLAN hub  
+  ![core switching and VLAN hub](/assets/photos/switch.jpg)
+
+- Dual shielded Cat6 patch panels (front + rear) – cable termination and cross-connect  
+  ![patch panels](/assets/photos/patch.jpg)
+
+- OpenGear CM4148 console manager – centralized serial access for network and security devices  
+  ![console manager](/assets/photos/console3.jpg)
+
+- Rackmount KVM and HP TFT5600 rack console – local VGA/keyboard access  
+  ![local VGA/keyboard access](/assets/photos/console1.jpg)  
+  ![local VGA/keyboard access](/assets/photos/console2.jpg)
+
+</details>
+
+<details>
+  <summary><strong>Security & Monitoring</strong> – Firewalls, VPN, SOC node</summary>
+
+- Cisco ASA 5510 / 5515-X – perimeter firewalls and zone routing  
+  ![perimeter firewalls and zone routing](/assets/photos/sec1.jpg)  
+  ![perimeter firewalls and zone routing](/assets/photos/sec3.jpg)
+
+- SonicWall SRA 4200 – SSL VPN and remote access gateway  
+  ![SSL VPN and remote access gateway](/assets/photos/sec2.jpg)
+
+- Panasonic Toughbook CF-30 – NST/SELKS and Suricata SOC node  
+  ![NST/SELKS and Suricata as a small SOC node](/assets/photos/monitor1.jpg)  
+  ![NST/SELKS and Suricata as a small SOC node](/assets/photos/monitor2.jpg)
+
+</details>
 
 ---
 
 ## 🌐 Logical Architecture
 
-The network is segmented into distinct zones. Each zone maps to one or more VLANs and to specific firewall policies.
+The network is segmented into distinct zones. Each zone maps to one or more VLANs on the Dell X1052P and to specific policies on the ASA.
 
 ### Zones (Sanitized)
 
@@ -97,68 +175,94 @@ The network is segmented into distinct zones. Each zone maps to one or more VLAN
 | Honeypots  | Intentionally exposed services for observation    |
 | Guest      | Untrusted devices and temporary clients           |
 
-The Dell X1052P switch provides Layer 2 separation for each VLAN.  
-Inter-VLAN routing and filtering are performed on the ASA, not on the switch.
+The Dell X1052P switch provides **Layer 2 separation** for each VLAN.  
+**Inter-VLAN routing and filtering** are performed on the ASA, not on the switch.
+
+---
 
 ### Traffic Flows (Conceptual)
 
-- **Internet ↔ ASA ↔ DMZ**  
-  Public-facing lab services and controlled exposure tests.
+| Flow                         | Purpose                                           | Controls                                                |
+|------------------------------|---------------------------------------------------|---------------------------------------------------------|
+| Internet ↔ ASA ↔ DMZ         | Public-facing services and exposure tests        | ASA ACLs, NAT, logging                                  |
+| Internet ↔ ASA/SRA ↔ Mgmt    | Remote administration over VPN                   | VPN profiles, restricted subnets, authentication        |
+| Lab / Guest ↔ ASA ↔ Internet | Outbound access for tools and clients            | Restricted egress rules, logging                        |
+| Honeypots ↔ ASA ↔ Internet   | Inbound scans/attacks to honeypot zone           | Controlled inbound; tightly limited outbound            |
+| Mgmt ↔ Other zones           | Admin access to infrastructure                   | Protocol + host-specific ACLs on ASA                    |
 
-- **Internet ↔ ASA/SRA ↔ Management**  
-  Remote administration over VPN.
+Exact IP addressing and VLAN IDs are documented in sanitized form in:
 
-- **Lab / Guest ↔ ASA ↔ Internet**  
-  Outbound access under restricted policies and logging.
+- `docs/02-network-architecture.md`
 
-- **Honeypots ↔ ASA ↔ Internet**  
-  Inbound scans and attacks are allowed in a controlled way; outbound traffic is tightly limited.
+---
 
-- **Management ↔ Other Zones**  
-  Administrative access to infrastructure from specific management hosts and protocols only.
+### Addressing Approach (Sanitized)
 
-Exact IP addressing and VLAN IDs are described in sanitized form in `docs/02-network-architecture.md`.
+- Each zone uses a **distinct RFC1918 subnet** (for example, `/24` ranges per zone).
+- The **ASA is the default gateway** for all VLANs.
+- The Dell X1052P operates in **L2 mode only** (no L3 SVIs used for routing).
+- Management IPs for infrastructure (switch, firewalls, iDRAC, console, SOC node) live exclusively in the **Management subnet**.
+- Public address examples and NAT mappings use **documentation ranges** only (e.g., `198.51.100.0/24`, `203.0.113.0/24`).
 
 ---
 
 ## 🔒 Security & Monitoring
 
-Security and observability are part of the base design.
+Security and observability are part of the base design, not an afterthought.
 
 ### Perimeter & Segmentation
 
-- Cisco ASA appliances:
-  - Define interface roles (outside, management, core, DMZ, lab, honeypots, guest)
-  - Apply NAT for public exposure and outbound access
-  - Enforce ACLs describing which zones can communicate and on which ports
+**Cisco ASA appliances:**
 
-- SonicWall SRA 4200:
-  - Terminates remote VPN sessions
-  - Restricts VPN users to selected management and lab subnets
+- Define interface roles:
+  - `outside`, `management`, `core`, `dmz`, `lab`, `honeypots`, `guest`
+- Apply NAT rules:
+  - Public-facing services in the DMZ
+  - Outbound access from lab, guest, and honeypot zones
+- Enforce ACLs that:
+  - Explicitly permit required inter-zone traffic
+  - Deny and log everything else by default
 
-Administrative interfaces for core infrastructure devices are reachable only from the management zone.
+**SonicWall SRA 4200:**
+
+- Terminates remote VPN sessions
+- Exposes only:
+  - Selected management subnets
+  - Optional lab subnets for remote work
+- Uses authentication and restricted routing to avoid broad access
+
+Administrative interfaces for core infrastructure devices are reachable **only** from the management zone.
+
+---
 
 ### Logging, DPI, and SOC Node
 
-The Toughbook CF-30 (NST/SELKS) acts as a SOC node:
+The Toughbook CF-30, running NST/SELKS (including Suricata), acts as a compact SOC node.
+
+It:
 
 - Receives:
-  - Syslog from firewalls and selected hosts
-  - Logs from core services
-  - Mirrored traffic from chosen switch ports and/or ASA interfaces
+  - Syslog from ASA and SonicWall
+  - Logs from selected hosts and core services
+  - Mirrored traffic from key switch ports and/or ASA interfaces
+- Provides:
+  - Deep packet inspection with Suricata
+  - Dashboards and alert views through the SELKS stack
 
-- Runs:
-  - Suricata for deep packet inspection, alerting, and traffic analysis
+Monitoring design focuses on a limited set of well-chosen mirror points:
 
-Monitoring design focuses on a small number of well-chosen mirror points (for example DMZ ↔ Internet and honeypots ↔ Internet) rather than attempting to capture all traffic.
+- Example: DMZ ↔ Internet, Honeypots ↔ Internet  
+- Goal: capture **high-value** traffic paths rather than all traffic
 
-Additional details are documented in `docs/03-security-architecture.md`.
+Additional detail is documented in:
+
+- `docs/03-security-architecture.md`
 
 ---
 
 ## 📁 Repository Layout
 
-The repository reflects the structure of the lab and its documentation.
+The repository mirrors the structure of the lab and its documentation.
 
 ```text
 digital-fortress-lab/
@@ -182,41 +286,3 @@ digital-fortress-lab/
 │   └── change-log.md
 └── assets/
     └── photos/
-```
-
-### Directory Overview
-
-- **`docs/`** – Narrative documentation:
-  - Overview, hardware inventory, network and security architecture, services, operations, and roadmap.
-- **`diagrams/`** – Visual diagrams:
-  - Logical network diagram; rack and service diagrams can be added over time.
-- **`infra/`** – Technical examples:
-  - Sanitized ASA base policy and placeholders for automation and scripts.
-- **`runbooks/`** – Operational notes:
-  - Change history and, in future, backup/restore and incident response steps.
-- **`assets/`** – Visual assets:
-  - Redacted photos and related imagery, if needed.
-
----
-
-## ⚙️ Operations
-
-The lab is operated with the expectation that it may need to be rebuilt or modified over time:
-
-- Device configurations and Proxmox VM backups are taken regularly (stored outside this repository).
-- Topology and policy changes are reflected in `docs/` and summarized in `runbooks/change-log.md`.
-- New services or exposure scenarios are introduced with corresponding documentation so the logical design stays aligned with the actual implementation.
-
----
-
-## 🧼 Sanitization & Scope
-
-All content in this repository is intentionally sanitized:
-
-- IP ranges, hostnames, and object names are examples, not live values.
-- No keys, credentials, or VPN profiles are committed.
-- Hardware identifiers such as serial numbers and MAC addresses are omitted.
-
-The lab is isolated from production or customer systems. Honeypot and exposure testing is confined to this environment and configured to avoid unintended impact on external networks.
-
----
