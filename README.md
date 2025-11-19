@@ -286,3 +286,47 @@ digital-fortress-lab/
 │   └── change-log.md
 └── assets/
     └── photos/
+```
+
+### How to Navigate
+
+- Start with: `docs/00_overview.md` – narrative overview of the lab
+- Then: `docs/02-network-architecture.md` – network layout, VLANs, and flows
+- And: `docs/03-security-architecture.md` – security model and monitoring
+
+---
+
+## ⚙️ Operations
+
+The lab is operated with the expectation that it will evolve and occasionally be rebuilt.
+
+- **Backups**
+  - Device configurations and Proxmox VM backups are taken regularly (stored outside this repository).
+  - Backup and restore procedures are tracked under `docs/05-operations-and-maintenance.md`.
+
+- **Change Tracking**
+  - Topology and policy changes are reflected in the relevant `docs/` files.
+  - Each significant change is summarized in `runbooks/change-log.md`.
+
+- **Experiments**
+  - New services, exposure tests, or honeypot configurations are:
+    - Introduced in the lab
+    - Documented so the logical design stays aligned with reality
+
+The goal is for the lab to remain understandable and reproducible rather than drifting into an ad-hoc configuration.
+
+---
+
+## 🧼 Sanitization & Scope
+
+All content in this repository is intentionally sanitized:
+
+- IP ranges, hostnames, and network object names are **examples**, not live values.
+- No keys, credentials, VPN profiles, or other secrets are committed.
+- Hardware identifiers such as serial numbers and MAC addresses are omitted.
+- Configuration examples (such as `asa-lab-base-policy.txt`) are **structural** only and cannot be applied 1:1 to any real environment.
+
+The lab is isolated from any production or customer systems.  
+Honeypot and exposure testing is confined to this environment and configured to avoid unintended impact on external networks.
+
+---
