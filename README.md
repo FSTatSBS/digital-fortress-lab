@@ -52,7 +52,7 @@ The environment is built into a rack with structured cabling, patch panels, and 
      ![core switching and VLAN hub](/assets/photos/switch.jpg)
     
   - Dual shielded Cat6 patch panels (front + rear) – cable termination and cross-connect
-    
+     ![](/assets/photos/patch.jpg)
   - OpenGear CM4148 console manager – centralized serial access for network and security devices
     ![core switching and VLAN hub](/assets/photos/console3.jpg)
     
