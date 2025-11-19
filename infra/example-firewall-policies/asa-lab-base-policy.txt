@@ -1,0 +1,115 @@
+! Digital Fortress Lab - ASA Base Policy (Sanitized Example)
+! ---------------------------------------------------------
+! This configuration fragment illustrates the structure and intent
+! of the ASA policy used in the lab. IP addresses, object names, and
+! details are placeholders and do NOT reflect the live environment.
+
+!
+! Interface roles
+!
+
+interface GigabitEthernet0/0
+ nameif outside
+ security-level 0
+ ip address 198.51.100.10 255.255.255.0
+
+interface GigabitEthernet0/1
+ nameif core
+ security-level 90
+ ip address 10.0.20.1 255.255.255.0
+
+interface GigabitEthernet0/2
+ nameif dmz
+ security-level 50
+ ip address 10.0.30.1 255.255.255.0
+
+interface GigabitEthernet0/3
+ nameif lab
+ security-level 40
+ ip address 10.0.40.1 255.255.255.0
+
+interface GigabitEthernet0/4
+ nameif honeypots
+ security-level 30
+ ip address 10.0.50.1 255.255.255.0
+
+interface GigabitEthernet0/5
+ nameif mgmt
+ security-level 100
+ ip address 10.0.10.1 255.255.255.0
+
+!
+! Object definitions (sanitized)
+!
+
+object network OBJ_CORE_SERVERS
+ subnet 10.0.20.0 255.255.255.0
+
+object network OBJ_DMZ_SERVERS
+ subnet 10.0.30.0 255.255.255.0
+
+object network OBJ_LAB_CLIENTS
+ subnet 10.0.40.0 255.255.255.0
+
+object network OBJ_HONEYPOTS
+ subnet 10.0.50.0 255.255.255.0
+
+object network OBJ_MGMT_HOST
+ host 10.0.10.10
+
+object network OBJ_DMZ_WEB
+ host 10.0.30.20
+
+object network OBJ_PUBLIC_WEB
+ host 203.0.113.50
+
+!
+! Basic NAT example - DMZ web service
+!
+
+object network OBJ_DMZ_WEB
+ nat (dmz,outside) static OBJ_PUBLIC_WEB service tcp 80 80
+
+!
+! Access control - outside to DMZ (restricted)
+!
+
+access-list OUTSIDE_IN extended permit tcp any object OBJ_DMZ_WEB eq 80
+access-list OUTSIDE_IN extended deny ip any any
+
+access-group OUTSIDE_IN in interface outside
+
+!
+! Access control - mgmt to core/dmz/lab (admin only)
+!
+
+access-list MGMT_OUT extended permit tcp object OBJ_MGMT_HOST object OBJ_CORE_SERVERS eq 22
+access-list MGMT_OUT extended permit tcp object OBJ_MGMT_HOST object OBJ_DMZ_SERVERS eq 22
+access-list MGMT_OUT extended permit tcp object OBJ_MGMT_HOST object OBJ_LAB_CLIENTS eq 22
+access-list MGMT_OUT extended deny ip any any
+
+access-group MGMT_OUT in interface mgmt
+
+!
+! Access control - lab/guest to Internet (simplified)
+!
+
+! In practice, outbound rules are more specific and logged.
+access-list LAB_OUT extended permit tcp object OBJ_LAB_CLIENTS any eq 80
+access-list LAB_OUT extended permit tcp object OBJ_LAB_CLIENTS any eq 443
+access-list LAB_OUT extended deny ip any any
+
+access-group LAB_OUT in interface lab
+
+!
+! Logging (conceptual)
+!
+
+logging enable
+logging timestamp
+logging buffered warnings
+logging host mgmt 10.0.10.50          ! Example: SOC node / log collector (sanitized)
+
+!
+! End of example
+!
