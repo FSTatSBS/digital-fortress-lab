@@ -1,9 +1,9 @@
 # Digital Infrastructure Lab
-<p align="center">
+<p align="left">
 <img src="/assets/photos/test2.jpeg" alt="Full rack" width="75%"/>
 </p>
 
-<p align="center">
+<p align="left">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Lab-Active-brightgreen?style=for-the-badge&logo=proxmox&logoColor=white">
     <img src="https://img.shields.io/badge/Lab-Active-brightgreen?style=for-the-badge&logo=proxmox&logoColor=white" alt="Active"/>
