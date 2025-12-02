@@ -184,23 +184,6 @@ This snapshot reflects the lab's configuration as of December 2025, emphasizing 
 
 
 
-## At a Glance — Current as of: <ins>**December 2025**</ins>
-
-| Component                | Specification                                                                 | Status                  |
-|--------------------------|-------------------------------------------------------------------------------|-------------------------|
-| Hypervisor               | Proxmox VE on Dell R710 (128 GB RAM, dual Xeon)                               | Stable                  |
-| Storage                  | Dual EqualLogic FS7610 + Avid 18-bay chassis                                  | Redundant               |
-| Core Switch              | Dell X1052P — 52-port, full VLAN trunking                                     | L2 Master               |
-| Perimeter                | Cisco ASA 5510/5515-X + SonicWall SRA 4200                                    | Hardened                |
-| SOC Node                 | Panasonic Toughbook → NST/SELKS + Suricata                                    | Live DPI                |
-| Network Model            | Multi-zone, ASA-only L3 routing                                               | Zero Trust–inspired     |
-| OOB Management           | OpenGear CM4148 + rack KVM + HP TFT5600                                       | Always reachable        |
-
-<p align="center">
-  <strong>Lab Maturity</strong><br>
-  <progress value="94" max="100"></progress> <b>94%</b>
-</p>
-
 ## Table of Contents
 
 <details open>
