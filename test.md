@@ -1,5 +1,5 @@
 <p align="center">
-# Digital Infrastructure Lab
+**Digital Infrastructure Lab**
 </p>
 
 <p align="center">
