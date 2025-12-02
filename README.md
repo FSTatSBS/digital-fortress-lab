@@ -4,10 +4,10 @@
 **Digital infrastructure Lab** is a self-hosted security and infrastructure lab built on enterprise hardware and operated like a small production network. It is designed, built, and documented end to end by a single operator as a long-term R&D and learning platform.
 
 > [!NOTE]
-> ### This project demonstrates:
-> - Design and operate a segmented, enterprise-style network on Proxmox and legacy enterprise gear.  
-> - Implement ASA/SonicWall firewalls, VPNs, IDS/IPS (Suricata/SELKS), and centralized logging.  
-> - Document architectures, runbooks, and change management so someone else could understand, rebuild, or operate the environment.
+> ### In This Project:
+> - The design and operation of a segmented, enterprise-style network on Proxmox and legacy enterprise gear.  
+> - Implementation of ASA/SonicWall firewalls, VPNs, IDS/IPS (Suricata/SELKS), and central logging.  
+> - Documentation of architectures, runbooks, and change management.
 >   
 I use this lab to prototype security, monitoring, and operations ideas that I later bring into my professional work.
 
