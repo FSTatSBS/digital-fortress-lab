@@ -104,7 +104,7 @@ This repository details the architecture, implementation, and management of a de
   <progress value="94" max="100" style="width: 300px; height: 20px; border-radius: 4px; background-color: #e0e0e0; color: #4caf50;"></progress> <span style="font-weight: bold; margin-left: 8px;">94%</span>
 </div>
 
-<details style="margin-top: 24px;">
+
 <summary><strong>Architecture Diagram</strong></summary>
 
 ```mermaid
