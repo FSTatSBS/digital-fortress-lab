@@ -1,10 +1,10 @@
-# EvoSec-Lab
+# EvoSec-Lab 🚀
 
-<div align="left">
-  <img src="/assets/photos/test2.jpeg" alt="Enterprise Rack Configuration" width="85%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+<div align="center">
+  <img src="/assets/photos/test2.jpeg" alt="Enterprise Rack Configuration" width="85%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 </div>
 
-<div align="left" style="margin-top: 16px;">
+<div align="center" style="margin-top: 16px;">
   <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge&logo=proxmox&logoColor=white" alt="Lab Status: Active"/>
   <img src="https://img.shields.io/badge/Built-Solo-blue?style=for-the-badge&logo=github&logoColor=white" alt="Built Solo"/>
   <img src="https://img.shields.io/badge/Docs-Comprehensive-orange?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Comprehensive Documentation"/>
@@ -12,24 +12,34 @@
   <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge&logo=github&logoColor=white" alt="MIT License"/>
 </div>
 
+---
 
-# EvoSec-Lab 🚀
+## What is EvoSec-Lab?
 
-## What is this?
+**EvoSec-Lab** is a fully isolated environment for the **design, testing, and orchestration** of network topologies, security measures, and Project Controls workflows.  
 
-**EvoSec-Lab** is a fully isolated environment designed for the design, testing, and orchestration of network topologies, security measures, and Project Controls workflows.  
+It demonstrates how **enterprise-grade hardware**, **complex network topologies**, and **robust automation workflows** can be integrated seamlessly.  
 
-This lab showcases how **enterprise-grade equipment**, **complex topologies**, and **robust workflows** can be integrated and automated seamlessly.  
+This lab serves as a **hands-on playground for experimentation, learning, and proof-of-concept development**, combining hardware, software, and automation in realistic, production-like scenarios.
 
-It serves as a **playground for experimentation, learning, and proof-of-concept development**, combining hardware, software, and automation into a realistic and hands-on environment.
+---
 
+### 🔹 Key Highlights
+
+- **Enterprise-Grade Simulation:** Test real-world network setups with racks, switches, firewalls, and more.  
+- **Security-Oriented:** Honeypots, tar pits, and monitoring for safe security experimentation.  
+- **Automation & Orchestration:** Integrated with scripts and SaltStack to dynamically control infrastructure.  
+- **Risk-Free Environment:** Operates in complete isolation, preventing any impact on production systems.  
+- **Comprehensive Documentation:** Full notes and diagrams for replicable experiments.  
+
+---
 
 > [!NOTE]  
-> Engineered with production-level standards and documentation on authentic enterprise-grade hardware.
-> Operated in complete isolation from production environments to enable risk-free experimentation with realistic scenarios.
+> Engineered with production-level standards and documentation on authentic enterprise-grade hardware.  
 
-> [!IMPORTANT]
-> Data sanitized. Sensitive information, credentials, or real network details are excluded from this repo for OPSEC.
+> [!IMPORTANT]  
+> Data sanitized. Sensitive information, credentials, or real network details are **excluded** to maintain OPSEC.
+
 
 
 ## At a Glance — Current as of December 2025
