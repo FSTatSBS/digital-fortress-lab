@@ -9,7 +9,6 @@
   <img src="https://img.shields.io/badge/Built-Solo-blue?style=for-the-badge&logo=github&logoColor=white" alt="Built Solo"/>
   <img src="https://img.shields.io/badge/Docs-Comprehensive-orange?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Comprehensive Documentation"/>
   <img src="https://img.shields.io/badge/Nerd_Factor-11/10-pink?style=for-the-badge&logo=dependabot&logoColor=white" alt="Nerd Factor"/>
-  <img src="https://img.shields.io/badge/Security-Hardened-9cf?style=for-the-badge&logo=lock&logoColor=white" alt="Security Hardened"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge&logo=github&logoColor=white" alt="MIT License"/>
 </div>
 
