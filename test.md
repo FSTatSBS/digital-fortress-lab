@@ -15,11 +15,14 @@
 
 ## What is this? 
 
-**EvoSec-Lab** is an isolated environment for the design & testing of network topologies, security measures, and Project Controls workflows.
+# EvoSec-Lab
 
-I made this to showcase how enterprise-grade equipment, complex topologies, and robust workflows can be orchestrated and automated.
+**EvoSec-Lab** is an isolated environment for the design & testing of network topologies, security measures, and Project Controls workflows.  
+
+I made this to showcase how enterprise-grade equipment, complex topologies, and robust workflows can be orchestrated and automated.  
 
 It demonstrates the seamless integration of hardware, software, and automation, providing a realistic playground for experimentation, learning, and proof-of-concept development.
+
 
 > [!NOTE]  
 > Engineered with production-level standards and documentation on authentic enterprise-grade hardware.
