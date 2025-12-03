@@ -17,7 +17,7 @@ This repository details the architecture, implementation & management of a dedic
 
 It provides a secure, isolated environment for designing, testing, and refining of network topologies, security measures, and Project Controls.
 
-> [!IMPORTANT]  
+> [!NOTE]  
 > Engineered with production-level standards and documentation on authentic enterprise-grade hardware.
 
 > [!NOTE]
