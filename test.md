@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Nerd_Factor-11/10-ff0066?style=flat&logo=dependabot&logoColor=white" alt="Nerd Factor"/>
 </div>
 
-<summary><strong>Introduction</strong></summary>
+## Summary
 
 This repository details the architecture, implementation & management of a dedicated digital infrastructure laboratory. 
 
