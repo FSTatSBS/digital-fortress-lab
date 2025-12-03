@@ -28,9 +28,10 @@ This repository details the architecture, implementation, and management of a de
 
 <div align="center">
   <h2>🚀 Digital Infrastructure Lab</h2>
-  <img src="[https://github.com/FlorianStuettgen/digital-infrastructure-lab/blob/main/assets/photos/diagram.svg](https://github.com/FlorianStuettgen/digital-infrastructure-lab/blob/main/assets/photos/diagram.svg)" alt="System Diagram" width="800"/>
+  <img src="https://github.com/FlorianStuettgen/digital-infrastructure-lab/blob/main/assets/photos/diagram.svg" alt="System Diagram" width="800"/>
   <p><i>Full system architecture showing compute, storage, and network topology</i></p>
 </div>
+
 
 ![System Diagram](assets/photos/diagram.svg)
 
