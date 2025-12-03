@@ -26,6 +26,11 @@ This repository details the architecture, implementation, and management of a de
 
 ## At a Glance — Current as of December 2025
 
+![System Diagram](assets/photos/diagram.svg)
+
+
+
+
 <img src="assets/photos/diagram.svg" alt="System Diagram" width="1000"/>
 
 
