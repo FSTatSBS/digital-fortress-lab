@@ -104,13 +104,130 @@ This repository details the architecture, implementation, and management of a de
   <progress value="94" max="100" style="width: 300px; height: 20px; border-radius: 4px; background-color: #e0e0e0; color: #4caf50;"></progress> <span style="font-weight: bold; margin-left: 8px;">94%</span>
 </div>
 
-graph TD;
-    Core: Hypervisor Proxmox VE Dell R710 --> BCore: Storage Dual EqualLogic FS7610 + Avid Chassis;
-    B --> CNetwork: Core Switch Dell X1052P 52-port VLAN;
-    C --> DNetwork: Perimeter Cisco ASA + SonicWall SRA;
-    D --> ENetwork: SOC Node Panasonic Toughbook NST/SELKS + Suricata;
-    C --> FNetwork: Network Model Multi-zone ASA L3 Routing - Zero Trust;
-    GMgmt: OOB Management OpenGear CM4148 + Rack KVM + HP TFT5600 --> A;
+---
+config:
+  layout: dagre
+---
+flowchart TB
+ subgraph s1["Data Center Infrastructure"]
+    direction TB
+        CI_Hypervisor["💻 Hypervisor: Proxmox VE\nDell R710 - Hosts VMs & Containers"]
+        CI_Storage["💾 Storage Arrays:\nEqualLogic FS7610 + Avid Chassis\n(Redundant, High-Performance Storage Pools)"]
+        CI_VMs["🖥️ Virtual Machines & Containers\nAzure Stack / OpenStack / Custom Applications"]
+        CI_Networking["🌐 Network Interface & VRFs\nVirtual Routing & Forwarding\nVLANs & Subnets for Segmentation"]
+  end
+ subgraph s2["Core Network & Security"]
+    direction TB
+        NS_CoreSwitch["🔀 Core Switch: Dell X1052P\nLayer 2/3 Switch with VLAN Segmentation\nLink Aggregation"]
+        NS_PerimeterFirewall["🛡️ Perimeter Firewall:\nCisco ASA + SonicWall\nThreat Prevention, VPN Termination"]
+        NS_TPDetection["👁️ SOC & IDS:\nSuricata & Zeek/NST\nEnhanced Anomaly & Intrusion Detection"]
+        NS_ZeroTrust["🚧 Zero Trust Zones:\nMicro-segmentation, Application & User Segmentation"]
+        NS_CloudConnect["🌥️ Cloud Connect:\nAWS Direct Connect\nAzure ExpressRoute\nSecure Private Connections"]
+        NS_DNS["🌐 DNS & DNSSEC\nName Resolution & Security"]
+        NS_DHCP["DHCP & IPAM\nAutomated IP Assignment & Management"]
+  end
+ subgraph s3["Management & Monitoring"]
+    direction TB
+        MGMT_Controller["🖧 OOB Management:\nOpengear CM4148 + KVM Switch\nSerial Consoles & Power Management"]
+        MGMT_Monitoring["📊 Monitoring:\nZabbix / Grafana / Prometheus\nMetrics, Logs, Alerting"]
+        HW_Components["🛠️ Hardware Components:\nSwitches, Routers, Power Supplies, etc."]
+        MGMT_Backup["🔒 Management Backup & Credentials Store"]
+  end
+ subgraph s4["Backup & Disaster Recovery"]
+    direction TB
+        Backup_Offsite["🗄️ Offsite NAS / Cloud Backup:\nSnapshots, Replication, DR Testing"]
+        Backup_Cloud["☁️ Cloud Storage:\nBackblaze, S3, Azure Blob\nEncrypted & Versioned"]
+        Backup_Vault["🔐 Backup Encryption & Key Management"]
+        DR_Testing["✅ Regular Disaster Recovery Drills"]
+  end
+ subgraph s5["Zero Trust & Security Policies"]
+    direction TB
+        ZT_Critical["🔐 Critical Infrastructure:\nHypervisors & Storage Components"]
+        ZT_Segmentation["🌉 Network Segmentation:\nFirewall Policies, Micro-segmentation, VLANs"]
+        ZT_Mgmt["🛠️ Management & Out-Of-Band Access\nSecure Access for Administrators"]
+        ZT_Backup["🔄 Backup & Disaster Recovery\nEncrypted & Offsite"]
+        ZT_UserAccess["🧑‍💻 User Identity & Access Management\nLDAP / SSO Integration"]
+        ZT_Audit["📝 Audit Trails & Compliance"]
+  end
+ subgraph s6["External Cloud Platforms"]
+    direction LR
+        Cloud_Service["☁️ SaaS & Cloud Platforms\nSalesforce, GitHub, Jira, etc."]
+  end
+ subgraph s7["Automation & Orchestration"]
+    direction TB
+        Automation_Tool["🧰 Ansible Tower & AWX\nConfiguration Management"]
+        Provisioning_Tool["🧱 Terraform\nInfrastructure as Code"]
+        Scripts_API["🔗 Custom Scripts / APIs\nOrchestration & Custom Integrations"]
+        CI_CD_Pipeline["🤖 CI/CD Pipelines\nJenkins / GitLab CI"]
+  end
+    CI_Hypervisor -- VM Storage I/O --> CI_Storage
+    CI_Hypervisor -- VM & Container Traffic --> CI_VMs
+    CI_Hypervisor -- Management API & Control --> MGMT_Controller
+    CI_Hypervisor -- VM Data & I/O --> CI_Storage
+    CI_VMs -- Network Traffic --> NS_CoreSwitch
+    NS_CoreSwitch -- VLANs & Routing --> NS_PerimeterFirewall
+    NS_PerimeterFirewall -- Filtered Traffic --> NS_TPDetection
+    NS_TPDetection -- Threat Alerts & Logging --> MGMT_Monitoring
+    NS_TPDetection -- Alerts & Reports --> NS_ZeroTrust
+    NS_ZeroTrust -- Policy Enforcement & Segmentation --> NS_CoreSwitch
+    NS_ZeroTrust -- External Access & Policies --> NS_CloudConnect
+    NS_ZeroTrust -- "User & Application Micro-Segmentation" --> ZT_UserAccess
+    NS_CloudConnect -- Secure Connect --> Cloud_Service
+    NS_CloudConnect -- AWS Direct Connect / Azure ExpressRoute --> Cloud_Service
+    MGMT_Controller -- Serial & Power --> HW_Components
+    MGMT_Controller -- Switch Management & Network Access --> NS_CoreSwitch
+    MGMT_Monitoring -- Metrics, Alerts, Logs --> CI_Hypervisor
+    MGMT_Monitoring -- Event Correlation & Analysis --> NS_TPDetection
+    MGMT_Monitoring -- SNMP, Telemetry --> NS_CoreSwitch
+    MGMT_Monitoring -- Backup & Secure Storage --> MGMT_Backup
+    Backup_Offsite -- Data Sync & Replication --> Backup_Cloud
+    Backup_Cloud -- Encrypted Storage & Versioning --> Backup_Vault
+    Backup_Vault -- Key Management --> ZT_Backup
+    DR_Testing -- Regular Testing & Validation --> ZT_Backup
+    ZT_Critical --> ZT_Segmentation
+    ZT_Segmentation --> ZT_Mgmt
+    ZT_Mgmt --> ZT_Backup
+    ZT_Segmentation -- "Firewalls & Micro-segmentation Rules" --> NS_CoreSwitch
+    ZT_UserAccess -- Identity & Access Control --> ZT_Mgmt
+    Automation_Tool -- Configure & Deploy --> CI_Hypervisor
+    Provisioning_Tool -- Infrastructure as Code --> CI_Storage
+    Scripts_API -- Custom Orchestration & Control --> CI_Hypervisor
+    CI_CD_Pipeline -- CI/CD Automation --> CI_VMs
+    NS_TPDetection -- Suspicious Activity Alerts --> NS_ZeroTrust
+    NS_ZeroTrust -- Enforcement Policies --> NS_CoreSwitch
+    NS_ZeroTrust -- External Access Policies --> NS_CloudConnect
+
+     CI_Hypervisor:::core
+     CI_Storage:::core
+     CI_VMs:::core
+     CI_Networking:::core
+     NS_CoreSwitch:::network
+     NS_PerimeterFirewall:::network
+     NS_TPDetection:::network
+     NS_CloudConnect:::network
+     NS_DNS:::network
+     NS_DHCP:::network
+     MGMT_Controller:::mgmt
+     MGMT_Monitoring:::mgmt
+     HW_Components:::mgmt
+     Backup_Offsite:::backup
+     Backup_Cloud:::backup
+     Backup_Vault:::backup
+     ZT_Critical:::zeroTrust
+     ZT_Segmentation:::zeroTrust
+     ZT_Mgmt:::zeroTrust
+     ZT_Backup:::zeroTrust
+     ZT_UserAccess:::zeroTrust
+     Automation_Tool:::automation
+     Provisioning_Tool:::automation
+     Scripts_API:::automation
+     CI_CD_Pipeline:::automation
+    classDef core fill:#e6f7ff,stroke:#007acc,stroke-width:3px,rx:15,ry:15
+    classDef network fill:#fff4e1,stroke:#ff9500,stroke-width:3px,rx:15,ry:15
+    classDef mgmt fill:#e9ffe9,stroke:#33aa33,stroke-width:3px,rx:15,ry:15
+    classDef backup fill:#eaf4ff,stroke:#006ece,stroke-width:3px,rx:15,ry:15
+    classDef zeroTrust fill:#ffe4e1,stroke:#d3515e,stroke-width:3px,rx:15,ry:15
+    classDef automation fill:#f0e68c,stroke:#b8860b,stroke-width:2px,rx:15,ry:15
 
 
 
