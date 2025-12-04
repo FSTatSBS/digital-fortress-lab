@@ -6,8 +6,8 @@
 <div align="center" style="margin-top: 16px;">
   <img src="https://img.shields.io/badge/Status:-Active-brightgreen?style=for-the-badge&logo=proxmox&logoColor=white" alt="Lab Status"/>
   <img src="https://img.shields.io/badge/Built:-Solo-blue?style=for-the-badge&logo=github&logoColor=white" alt="Built Solo"/>
-  <img src="https://img.shields.io/badge/Nerd_Factor:-11/10-pink?style=for-the-badge&logo=dependabot&logoColor=white" alt="Nerd Factor"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge&logo=github&logoColor=white" alt="MIT License"/>
+  <img src="https://img.shields.io/badge/Nerd_Factor:-11/10-pink?style=for-the-badge&logo=dependabot&logoColor=white" alt="Nerd Factor"/>
   <img src="https://img.shields.io/badge/LinkedIn-Florian_Stuettgen-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </div>
 
@@ -15,9 +15,8 @@
 
 > [!NOTE]  
 > Engineered with enterprise-grade precision and fully documented hardware, software, and network operations.
-
-> [!WARNING]  
-> All sensitive credentials and network details are obfuscated or excluded to protect operational security.
+> 
+> All sensitive credentials and full network details are obfuscated or excluded to protect operational security.
 
 ---
 
@@ -72,7 +71,9 @@ This section integrates hardware, software, and operational details into a cohes
 ### **Compute & Storage**
 
 <details open>
-<summary><em> Component list, specifications, and operational status</em></summary>  
+  
+<summary><em> </em></summary>  
+
 - **Dell R710** runs **Qubes OS**, isolating all workloads into AppVMs for management, lab experimentation, honeypots, and guest domains.  
 - **EqualLogic FS7610 + Avid 18-bay chassis** run **Proxmox VE**, hosting storage-heavy VMs, orchestration, and containerized workloads.  
 - This dual-hypervisor approach separates **compute isolation (Qubes OS)** from **storage orchestration (Proxmox VE)**, maximizing security while maintaining performance.
@@ -84,6 +85,8 @@ This section integrates hardware, software, and operational details into a cohes
 
 <details open>
   
+<summary><em> </em></summary>  
+  
 - Dell X1052P handles all VLAN segmentation and high-throughput traffic.  
 - Patch panels and structured cabling maintain clean, redundant connectivity.  
 - Out-of-band access via OpenGear CM4148 and Rack KVM ensures management during network outages.
@@ -94,6 +97,8 @@ This section integrates hardware, software, and operational details into a cohes
 ### **Security & SOC Node**
 
 <details open>
+  
+<summary><em> </em></summary>  
   
 - Panasonic Toughbook running SELKS + Suricata provides real-time monitoring, intrusion detection, and ELK integration.  
 - SaltStack orchestrates dynamic VM placement, firewall adjustments, and honeypot activation across both Proxmox and Qubes OS domains.  
