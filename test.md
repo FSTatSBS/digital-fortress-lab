@@ -14,8 +14,7 @@
 </div>
 
 ---
-
-## What is this?
+<h2 align="center"><strong>What is this?</strong></h2>
 
 **EvoSec-Lab** is an isolated design and testing environment for network topologies, security measures & Project Controls workflows.  
 
