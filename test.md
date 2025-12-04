@@ -13,7 +13,14 @@
   <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge&logo=github&logoColor=white" alt="MIT License"/>
 </div>
 
+> [!NOTE]  
+> Engineered with production-level standards and documentation on authentic enterprise-grade hardware.  
+
+> [!IMPORTANT]  
+> Data sanitized. Sensitive information, credentials, or real network details are **excluded** to maintain OPSEC.
+
 ---
+
 <h2 align="center"><strong>What is this?</strong></h2>
 
 **EvoSec-Lab** is an isolated design and testing environment for **Network Topologies**, **Security Measures** & **Project Controls Workflows**.  
@@ -35,11 +42,7 @@ This lab serves as a **hands-on playground for experimentation, learning, and pr
 
 ---
 
-> [!NOTE]  
-> Engineered with production-level standards and documentation on authentic enterprise-grade hardware.  
 
-> [!IMPORTANT]  
-> Data sanitized. Sensitive information, credentials, or real network details are **excluded** to maintain OPSEC.
 
 
 
