@@ -1,16 +1,13 @@
 <h1 align="center"><strong>EvoSec-Lab</strong></h1>
-
-
 <div align="center">
   <img src="/assets/photos/test2.jpeg" alt="Enterprise Rack Configuration" width="85%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 </div>
-
 <div align="center" style="margin-top: 16px;">
   <img src="https://img.shields.io/badge/Status:-Active-brightgreen?style=for-the-badge&logo=proxmox&logoColor=white" alt="Lab Status: Active"/>
   <img src="https://img.shields.io/badge/Built:-Solo-blue?style=for-the-badge&logo=github&logoColor=white" alt="Build finished"/>
-  <img src="https://img.shields.io/badge/Docs:-Comprehensive-orange?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Comprehensive Documentation"/>
   <img src="https://img.shields.io/badge/Nerd_Factor:-11/10-pink?style=for-the-badge&logo=dependabot&logoColor=white" alt="Nerd Factor"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge&logo=github&logoColor=white" alt="MIT License"/>
+  <img src="https://img.shields.io/badge/LinkedIn-Florian_Stuettgen-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile"/>
 </div>
 
 > [!NOTE]  
@@ -30,7 +27,12 @@
 This lab serves as a **hands-on playground for experimentation, learning, and proof-of-concept development**, combining hardware, software, and automation in realistic, production-like scenarios.
 
 ---
+
+<div align="left">
+  
 ### 🔹 Key Highlights
+
+</div>
 
 **Enterprise-Grade Simulation**  
 Realistic network environments featuring racks, switches, and firewalls designed to mirror production-grade infrastructures.
