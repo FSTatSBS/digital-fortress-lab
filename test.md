@@ -21,7 +21,7 @@
 <h2 align="left"><strong>What is this?</strong></h2>
 <div align="left">
 
-**EvoSec-Lab** is an isolated design and testing orchestration stage for Network Topologies, Security Measures & **Project Controls Workflows**.  
+**EvoSec** is an isolated design and testing orchestration stage for Network Topologies, Security Measures & **Project Controls Workflows**.  
 
 Enterprise-grade hardware, **Complex** network topologies, & Robust workflows integrated seamlessly.  
 
