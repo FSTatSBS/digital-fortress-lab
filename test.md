@@ -69,7 +69,7 @@ This lab serves as a hands-on playground for experimentation, learning, and proo
 
 ## Physical Platform
 
-<details open>
+<details>
 <summary><strong>Compute & Storage</strong></summary>
 
 <br>
@@ -79,7 +79,7 @@ This lab serves as a hands-on playground for experimentation, learning, and proo
 
 </details>
 
-<details open>
+<details>
 <summary><strong>Network & OOB Management</strong></summary>
 
 <br>
@@ -90,7 +90,7 @@ This lab serves as a hands-on playground for experimentation, learning, and proo
 
 </details>
 
-<details open>
+<details>
 <summary><strong>Security & SOC Node</strong></summary>
 
 <br>
