@@ -120,9 +120,9 @@ By bringing together data from multiple sources, EvoSec turns raw information in
 
 ---
 
-##  Why EvoSec?
+<div align="center">
 
-<div align="left">
+##  Why EvoSec?
 
 ![test2](https://github.com/user-attachments/assets/7388aa89-6603-4772-b960-438a4a78339b)
 
