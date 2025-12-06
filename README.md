@@ -15,7 +15,7 @@ This wiki provides an overview of EvoSec’s architecture, components, and appli
 
 | Feature | Description |
 |:------:|:-----------|
-| **Enterprise-Grade Infrastructure** | High-performance servers, storage, and networking provide a professional-grade lab for advanced research and experimentation. |
+| **Enterprise-Grade Infrastructure** | High-performance servers, storage, and networking for advanced research and experimentation. |
 | **Segregated Lab Zones** | VLANs create isolated spaces for honeypots, tar pits, DMZs, and management networks and flexible testing. |
 | **AI-Driven Automation** | Large language models orchestrate network, security, and lab operations in real time for rapid responses. |
 | **Automated Workflows** | Pipelines streamline VM provisioning, software deployment, and configuration management at scale. |
