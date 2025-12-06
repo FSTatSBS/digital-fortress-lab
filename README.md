@@ -98,8 +98,6 @@ Supporting automated deployment, updates, scaling, adaptive experiments, and pre
 
 The system delivers granular observability across infrastructure, apps, and network by collecting metrics such as CPU, memory, storage I/O, and network traffic deep packet inspection for detailed analysis and interpretation. 
 
-![1](https://github.com/FlorianStuettgen/EvoSec/blob/main/assets/photos/diagram.svg](https://github.com/FlorianStuettgen/EvoSec/blob/main/assets/photos/diagram.svg))
-
 The ELK stack provides central logging for real-time event tracking and anomaly detection, while Grafana dashboards visualize system and security status.
 SOC integration enables continuous monitoring, advanced threat detection, and prompt response to abnormal activities. 
 By bringing together data from multiple sources, EvoSec turns raw information into actionable insights, improving operational efficiency and maintaining strong security.
