@@ -9,7 +9,7 @@
 SOC_Replay is a cybersecurity research lab built for experimentation and operational analysis. This exciting new platform brings together honeypots, intrusion detection, automation, and monitoring into a unified environment. 
 
 Visit the wiki for a detailed breakdown of SOC_Replay’s architecture, components, and experiments:
-[SOC_Replay-Lab Wiki](https://github.com/FlorianStuettgen/SOC_Replay/wiki).
+[SOC_Replay Wiki](https://github.com/FlorianStuettgen/SOC_Replay/wiki).
 
 ---
 
@@ -35,7 +35,7 @@ Visit the wiki for a detailed breakdown of SOC_Replay’s architecture, componen
 <div align="left">
 
 <details open>
-  <summary><strong>SOC_Replay-Lab Wiki Table of Contents</strong></summary>
+  <summary><strong>SOC_Replay Wiki Table of Contents</strong></summary>
 
 - [01 – Architecture](https://github.com/FlorianStuettgen/SOC_Replay/wiki/01-%E2%80%90-Architecture)
 - [02 – Hardware](https://github.com/FlorianStuettgen/SOC_Replay/wiki/02-%E2%80%90-Hardware)
@@ -71,7 +71,7 @@ graph LR
 ```
 The platform integrates honeypots, tar pits, and IDS/IPS systems to enable controlled analysis of attacker behavior and threat research, while dynamic network orchestration allows subsecond-scale VLAN reconfigurations and automated containment, simulating complex operational scenarios. 
 
-AI-driven automation, Infrastructure-as-Code provisioning, and pipelines ensure seamless, scalable operations, while real-time dashboards, logging, and alerts provide complete observability and actionable insights. Designed with reproducibility and demonstration in mind, SOC_Replay-Lab serves as a professional and educational showcase of enterprise lab practices and research-grade workflows.
+AI-driven automation, Infrastructure-as-Code provisioning, and pipelines ensure seamless, scalable operations, while real-time dashboards, logging, and alerts provide complete observability and actionable insights. Designed with reproducibility and demonstration in mind, SOC_Replay serves as a professional and educational showcase of enterprise lab practices and research-grade workflows.
 
 ---
 
