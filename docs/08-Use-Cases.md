@@ -1,6 +1,6 @@
 # 08 – Use Cases
 
-EvoSec supports cybersecurity research, testing, and demonstration scenarios:
+SOC_Replay supports cybersecurity research, testing, and demonstration scenarios:
 
 - **Honeypot / Tar-pit Deployment** — attract attackers, study behavior, log actions  
 - **Multi-VM Attack Simulation** — simulate large-scale attacks and lateral movement  
