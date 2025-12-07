@@ -366,5 +366,5 @@ The idea here is to follow the 'as-code' approach, wherever possible, with a cen
 * CheckPoint, [Sandbox evasion techniques](https://evasions.checkpoint.com/techniques/timing.html)
  
 # End
-Go to [main page](https://github.com/cyb3rxp/awesome-soc/blob/main/README.md).
+
 
