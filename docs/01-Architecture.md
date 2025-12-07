@@ -6,12 +6,4 @@ EvoSec is a comprehensive lab environment for cybersecurity research and operati
 
 The platform integrates honeypots, tar pits, IDS/IPS systems, and provides dynamic network orchestration (VLAN reconfiguration), automated failure containment, and threat simulation.  
 
-```mermaid
-graph LR
-    Lab["EvoSec-Lab Environment"] --> VM["Multi-VM Experiments"]
-    Lab --> CT["Containerized Services"]
-    Lab --> HS["Hypervisor Snapshots"]
-    VM --> Flex["Flexible Testing"]
-    CT --> Flex
-    HS --> Flex
-    Flex --> Res["Reproducible Results"]
+

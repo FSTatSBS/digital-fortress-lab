@@ -9,7 +9,7 @@
 
 EvoSec is a cybersecurity research lab built for experimentation and operational analysis. This exciting new platform brings together honeypots, intrusion detection, automation, and monitoring into a unified environment, enabling practical testing and innovation. 
 
-Visit the wiki for a detailed overview of EvoSec’s architecture, components, and experiments:
+Visit the wiki for a detailed breakdown of EvoSec’s architecture, components, and experiments:
 [EvoSec-Lab Wiki](https://github.com/FlorianStuettgen/EvoSec/wiki).
 
 ---
@@ -23,7 +23,7 @@ Visit the wiki for a detailed overview of EvoSec’s architecture, components, a
 | **Enterprise-Grade** | High-performance servers, storage, and networking for advanced research. |
 | **Zones** | VLANs create isolated spaces for honeypots, tar pits, DMZs, and management networks. |
 | **AI-Driven** | Models orchestrate network, security for rapid responses. |
-| **Automated** | Pipelines streamline VM provisioning, software deployment, and configuration management at scale. |
+| **Automated** | Streamlining of VM provisioning,  deployment, and configuration management at scale. |
 | **Full Observability** | Monitoring and dashboards for intrusion detection and logs provide actionable insights. |
 | **Zero-Trust Security** | Compartmentalized VMs, automated threat response, and SOC integration enforce strict operational security. |
 
@@ -98,10 +98,10 @@ EvoSec is built around a multi-layered zero-trust security model, combining segm
 EvoSec is a smart lab orchestration platform that leverages AI, machine learning, and DevOps to automate, optimize, and secure research environments. It continuously monitors system status and network traffic, providing real-time optimization, intelligent threat detection, and automated responses.
 Core capabilities include dynamic network configuration, adaptive honeypot-based deception, and event-driven anomaly detection, enabling researchers to study threats while maintaining integrity. 
 
-QubesOS is utilized for secure, compartmentalized experimentation and SaltStack for advanced configuration management and automated provisioning.
+QubesOS is utilized for secure, compartmentalized experimentation, and SaltStack for advanced configuration management and automated provisioning.
 Supporting automated deployment, updates, scaling, adaptive experiments, and predictive maintenance, the system enhances control and efficiency while AI automation ensures secure, responsive, and adaptable lab infrastructure.
 
-The system delivers granular observability across infrastructure, apps, and network by collecting metrics such as CPU, memory, storage I/O, and network traffic deep packet inspection for detailed analysis and interpretation: 
+The system delivers granular observability across infrastructure, apps, and network by collecting metrics such as CPU, memory, storage I/O, and network-traffic deep packet inspection for detailed analysis and interpretation: 
 
 <div align="center">
 
@@ -123,14 +123,14 @@ By bringing together data from multiple sources, EvoSec turns raw information in
 
 ## Why EvoSec?
 
-EvoSec combines enterprise-grade infrastructure, AI-driven automation, 
-and security, making it ideal for professional research and education.
-
-![test2](https://github.com/user-attachments/assets/7388aa89-6603-4772-b960-438a4a78339b)
+EvoSec combines enterprise-grade infrastructure, AI-automation & security for professional research and education.
 
 As of December 2025, EvoSec is now fully operational!
 
-Stay tuned or visit us for more details on EvoSec’s architecture, components, and ongoing experiments:
+
+![test2](https://github.com/user-attachments/assets/7388aa89-6603-4772-b960-438a4a78339b)
+
+Visit us for more details on EvoSec’s architecture, components, and ongoing experiments:
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Florian_Stuettgen-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/florian-stuettgen/)
 [![EvoSec Wiki](https://img.shields.io/badge/EvoSec-Wiki-0A66C2?style=for-the-badge&logo=github)](https://github.com/FlorianStuettgen/EvoSec/wiki)
