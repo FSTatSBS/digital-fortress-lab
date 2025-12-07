@@ -1,6 +1,6 @@
 # 07 – Security Model
 
-EvoSec follows a multi-layered **zero-trust** security model to ensure experiments cannot compromise lab integrity.
+SOC_Replay follows a multi-layered **zero-trust** security model to ensure experiments cannot compromise lab integrity.
 
 ## Core Elements
 
