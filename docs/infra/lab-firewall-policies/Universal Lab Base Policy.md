@@ -1,4 +1,4 @@
-# Universal Lab Base-Policy (Enhanced & Enriched Version)
+# Universal Lab Base-Policy
 
 This document provides a **comprehensive lab configuration** for Cisco ASA 5510, ASA 5515-X, and SonicWall 4200 firewalls. It is designed for enterprise-grade labs, integrating advanced security, monitoring, segmentation, NAT, VPNs, IPS/IDS, and best practices.
 
