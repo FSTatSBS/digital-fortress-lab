@@ -1,6 +1,6 @@
 # 09 – Roadmap
 
-Future EvoSec enhancements:
+Future SOC_Replay enhancements:
 
 - Adaptive threat-response automation  
 - Large-scale, distributed experiments (multi-site, hybrid cloud)  
